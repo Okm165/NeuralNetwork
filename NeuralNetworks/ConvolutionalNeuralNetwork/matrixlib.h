@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <math.h>
 #include <random>
@@ -21,10 +20,7 @@ public:
     int rows, cols;
     MATRIX data;
 
-    Matrix()
-    {
-
-    }
+    Matrix() {}
     Matrix(const int &rows, const int &cols)
     {
         this->rows = rows;
@@ -41,13 +37,13 @@ public:
             }
         }
     }
-    void print(Matrix& mtx)
+    void print()
     {
-        for (int k = 0; k < mtx.rows; k++)
+        for (int k = 0; k < this->rows; k++)
         {
-            for (int j = 0; j < mtx.cols; j++)
+            for (int j = 0; j < this->cols; j++)
             {
-                std::cout << mtx.data[k][j] << " ";
+                std::cout << this->data[k][j] << " ";
             }
             std::cout << std::endl;
         }
@@ -77,7 +73,7 @@ public:
             }
         return result;
     }
-    Matrix operator * (const int& a)
+    Matrix operator * (const double& a)
     {
         Matrix result(this->rows, this->cols);
         for (int k = 0; k < result.rows; k++)

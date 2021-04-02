@@ -142,6 +142,7 @@
     <ClCompile Include="execute.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dataprep.h" />
     <ClInclude Include="kernel.h" />
     <ClInclude Include="matrixlib.h" />
     <ClInclude Include="neuralNetwork.h" />

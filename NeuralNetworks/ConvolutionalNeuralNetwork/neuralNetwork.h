@@ -52,7 +52,7 @@ public:
 		result.guess = Matrix::toArray(temporaryResult);
 		return result;
 	}
-	gradientsMatricesReturnObject gradients(std::vector<double>& input, std::vector<double>& target)
+	gradientsMatricesReturnObject gradients(std::vector<double>& input, std::vector<double>& target, double& learningRate)
 	{
 		Matrix_Array RWeightMatrices, RBiasMatrices, weightsGradMatrices, biasGradMatrices;
 		gradientsMatricesReturnObject result;
@@ -88,8 +88,8 @@ public:
 				newMiuMatrix.data[k][0] = sum;
 			}
 			miuMatrix = newMiuMatrix;
-			result.weightsMatricesFinal.emplace_back(RWeightMatrices[p] + weightGradMatrix * -1);
-			result.biasesMatricesFinal.emplace_back(RBiasMatrices[p] + biasGradMatrix * -1);
+			result.weightsMatricesFinal.emplace_back(RWeightMatrices[p] + (weightGradMatrix * -1) * learningRate);
+			result.biasesMatricesFinal.emplace_back(RBiasMatrices[p] + (biasGradMatrix * -1) * learningRate);
 		}
 
 		result.weightsMatricesFinal = Matrix::reverseArray(result.weightsMatricesFinal);
